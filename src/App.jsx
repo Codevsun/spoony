@@ -5,13 +5,14 @@ import {
   Route,
   useNavigate,
 } from 'react-router-dom';
-import Layout from './assets/components/Layout';
-import NavBar from './assets/components/NavBar';
-import Footer from './assets/components/Footer';
+import Layout from './components/Layout';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 // Page imports
 import HomePage from './pages/HomePage';
 import RecipesPage from './pages/RecipesPage';
+import RecipeDetailPage from './pages/RecipeDetailPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
@@ -83,6 +84,15 @@ function App() {
           element={
             <AppLayout>
               <RecipesPage />
+            </AppLayout>
+          }
+        />
+
+        <Route
+          path='/recipes/:id'
+          element={
+            <AppLayout>
+              <RecipeDetailPage />
             </AppLayout>
           }
         />

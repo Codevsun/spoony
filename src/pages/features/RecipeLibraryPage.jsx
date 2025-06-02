@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { advancedRecipeSearch } from '../../services/spoonacularApi';
+import RecipeCard from '../../components/RecipeCard';
 
 const RecipeLibraryPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -8,7 +9,6 @@ const RecipeLibraryPage = () => {
   const [selectedType, setSelectedType] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [sortBy, setSortBy] = useState('popularity');
-  const [viewMode, setViewMode] = useState('grid');
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
@@ -78,7 +78,7 @@ const RecipeLibraryPage = () => {
         diet: selectedDiet,
         type: selectedType,
         sort: sortBy,
-        number: 20,
+        number: 12,
       };
 
       // Add time constraints
@@ -117,17 +117,11 @@ const RecipeLibraryPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Handle filter changes
-  const handleFilterChange = () => {
-    performSearch();
-  };
-
-  const getTimeDisplay = minutes => {
-    if (!minutes) return 'Quick';
-    if (minutes < 60) return `${minutes} mins`;
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+  // Handle search input key press
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
   };
 
   const formatCuisineName = cuisine => {
@@ -151,21 +145,44 @@ const RecipeLibraryPage = () => {
         </p>
       </div>
 
-      {/* Advanced Filters */}
+      {/* Search and Filters */}
       <div className='bg-white rounded-lg border p-6 mb-8'>
         {/* Search Bar */}
-        <div className='mb-4'>
-          <input
-            type='text'
-            placeholder='Search recipes, ingredients, or keywords...'
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-            className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D3648] focus:border-transparent'
-          />
+        <div className='flex flex-col md:flex-row gap-4 mb-4'>
+          <div className='flex-1 relative'>
+            <input
+              type='text'
+              placeholder='Search recipes, ingredients, or keywords...'
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeyPress}
+              className='w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D3648] focus:border-transparent'
+            />
+            <svg
+              className='absolute left-3 top-3.5 h-5 w-5 text-gray-400'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+              />
+            </svg>
+          </div>
+
+          <button
+            onClick={performSearch}
+            className='px-6 py-3 bg-[#2D3648] text-white rounded-lg hover:bg-[#1F2937] transition-colors'
+          >
+            Search
+          </button>
         </div>
 
-        {/* Filter Row 1 */}
-        <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mb-4'>
+        {/* Advanced Filters */}
+        <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
           <select
             value={selectedCuisine}
             onChange={e => setSelectedCuisine(e.target.value)}
@@ -216,47 +233,19 @@ const RecipeLibraryPage = () => {
             <option value='30-60'>30-60 min</option>
             <option value='over-60'>Over 1 hour</option>
           </select>
-        </div>
 
-        {/* Sort and View Options */}
-        <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
-          <div className='flex items-center gap-4'>
-            <span className='text-sm text-gray-600'>Sort by:</span>
-            <select
-              value={sortBy}
-              onChange={e => setSortBy(e.target.value)}
-              className='px-3 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#2D3648] focus:border-transparent'
-            >
-              {sortOptions.map(option => (
-                <option key={option} value={option}>
-                  {option.charAt(0).toUpperCase() +
-                    option.slice(1).replace('-', ' ')}
-                </option>
-              ))}
-            </select>
-            <button
-              onClick={handleFilterChange}
-              className='bg-[#2D3648] text-white px-4 py-2 rounded text-sm hover:bg-[#1F2937] transition-colors'
-            >
-              Apply Filters
-            </button>
-          </div>
-
-          <div className='flex items-center gap-2'>
-            <span className='text-sm text-gray-600'>View:</span>
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`p-2 rounded ${viewMode === 'grid' ? 'bg-[#2D3648] text-white' : 'bg-gray-100 text-gray-600'}`}
-            >
-              ⊞
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`p-2 rounded ${viewMode === 'list' ? 'bg-[#2D3648] text-white' : 'bg-gray-100 text-gray-600'}`}
-            >
-              ☰
-            </button>
-          </div>
+          <select
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value)}
+            className='px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D3648] focus:border-transparent'
+          >
+            {sortOptions.map(option => (
+              <option key={option} value={option}>
+                {option.charAt(0).toUpperCase() +
+                  option.slice(1).replace('-', ' ')}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -308,117 +297,17 @@ const RecipeLibraryPage = () => {
         </div>
       )}
 
-      {/* Recipe Grid/List */}
+      {/* Recipe Grid */}
       {!loading && recipes.length > 0 && (
-        <div
-          className={
-            viewMode === 'grid'
-              ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-              : 'space-y-4'
-          }
-        >
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {recipes.map(recipe => (
-            <div
-              key={recipe.id}
-              className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden ${
-                viewMode === 'list' ? 'flex gap-4 p-4' : ''
-              }`}
-            >
-              <img
-                src={recipe.image}
-                alt={recipe.title}
-                className={
-                  viewMode === 'list'
-                    ? 'w-32 h-32 object-cover rounded-lg flex-shrink-0'
-                    : 'w-full h-48 object-cover'
-                }
-              />
-              <div className={viewMode === 'list' ? 'flex-1' : 'p-4'}>
-                <div className='flex justify-between items-start mb-2'>
-                  <h3 className='text-lg font-bold text-gray-900 line-clamp-2 flex-1'>
-                    {recipe.title}
-                  </h3>
-                  <div className='flex items-center gap-1 ml-2'>
-                    {recipe.healthScore && (
-                      <span className='text-xs bg-green-100 text-green-700 px-2 py-1 rounded'>
-                        Health: {recipe.healthScore}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className='flex items-center gap-4 text-sm text-gray-500 mb-3'>
-                  <span>⏱️ {getTimeDisplay(recipe.readyInMinutes)}</span>
-                  {recipe.servings && (
-                    <span>👥 {recipe.servings} servings</span>
-                  )}
-                  {recipe.aggregateLikes && (
-                    <span>👍 {recipe.aggregateLikes}</span>
-                  )}
-                </div>
-
-                {/* Cuisines and Diets */}
-                <div className='mb-3'>
-                  {recipe.cuisines && recipe.cuisines.length > 0 && (
-                    <div className='flex flex-wrap gap-1 mb-2'>
-                      {recipe.cuisines.slice(0, 2).map((cuisine, index) => (
-                        <span
-                          key={index}
-                          className='text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded'
-                        >
-                          {cuisine}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {recipe.diets && recipe.diets.length > 0 && (
-                    <div className='flex flex-wrap gap-1'>
-                      {recipe.diets.slice(0, 3).map((diet, index) => (
-                        <span
-                          key={index}
-                          className='text-xs bg-green-100 text-green-700 px-2 py-1 rounded'
-                        >
-                          {diet}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Recipe Summary (list view only) */}
-                {viewMode === 'list' && recipe.summary && (
-                  <p
-                    className='text-gray-600 text-sm mb-3 line-clamp-2'
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        recipe.summary
-                          .replace(/<[^>]*>/g, '')
-                          .substring(0, 150) + '...',
-                    }}
-                  />
-                )}
-
-                <div className='flex justify-between items-center'>
-                  <div className='flex items-center gap-2'>
-                    {recipe.pricePerServing && (
-                      <span className='text-sm text-gray-500'>
-                        ${(recipe.pricePerServing / 100).toFixed(2)}/serving
-                      </span>
-                    )}
-                  </div>
-                  <button className='bg-[#2D3648] text-white px-4 py-2 rounded text-sm hover:bg-[#1F2937] transition-colors'>
-                    View Recipe
-                  </button>
-                </div>
-              </div>
-            </div>
+            <RecipeCard key={recipe.id} recipe={recipe} showPrice={true} />
           ))}
         </div>
       )}
 
       {/* Load More Button */}
-      {!loading && recipes.length > 0 && recipes.length >= 20 && (
+      {!loading && recipes.length > 0 && recipes.length >= 12 && (
         <div className='text-center mt-12'>
           <button
             onClick={() => {

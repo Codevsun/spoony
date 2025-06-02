@@ -15,7 +15,105 @@ const SAMPLE_RECIPES = [
     cuisines: ['Italian'],
     diets: [],
     pricePerServing: 295,
-    summary: 'Rich, hearty lasagna with layers of beef, cheese, and pasta.',
+    summary:
+      'Rich, hearty lasagna with layers of beef, cheese, and pasta. This family favorite combines tender pasta sheets with savory meat sauce and three types of cheese for the ultimate comfort food experience.',
+    extendedIngredients: [
+      {
+        name: 'Ground beef',
+        amount: 1,
+        unit: 'lb',
+        original: '1 lb ground beef',
+      },
+      {
+        name: 'Lasagna noodles',
+        amount: 12,
+        unit: 'sheets',
+        original: '12 lasagna noodle sheets',
+      },
+      {
+        name: 'Ricotta cheese',
+        amount: 15,
+        unit: 'oz',
+        original: '15 oz ricotta cheese',
+      },
+      {
+        name: 'Mozzarella cheese',
+        amount: 16,
+        unit: 'oz',
+        original: '16 oz mozzarella cheese, shredded',
+      },
+      {
+        name: 'Parmesan cheese',
+        amount: 0.5,
+        unit: 'cup',
+        original: '1/2 cup grated Parmesan cheese',
+      },
+      {
+        name: 'Marinara sauce',
+        amount: 24,
+        unit: 'oz',
+        original: '24 oz marinara sauce',
+      },
+      { name: 'Eggs', amount: 2, unit: 'large', original: '2 large eggs' },
+      {
+        name: 'Italian seasoning',
+        amount: 2,
+        unit: 'tsp',
+        original: '2 tsp Italian seasoning',
+      },
+    ],
+    analyzedInstructions: [
+      {
+        steps: [
+          {
+            number: 1,
+            step: 'Preheat oven to 375°F. Cook lasagna noodles according to package directions and drain.',
+          },
+          {
+            number: 2,
+            step: 'Brown ground beef in a large skillet over medium heat. Drain excess fat and stir in marinara sauce.',
+          },
+          {
+            number: 3,
+            step: 'In a bowl, mix ricotta cheese, eggs, and Italian seasoning until well combined.',
+          },
+          {
+            number: 4,
+            step: 'Layer half the noodles in a greased 9x13 baking dish. Spread ricotta mixture over noodles.',
+          },
+          {
+            number: 5,
+            step: 'Add half the meat sauce and half the mozzarella cheese. Repeat layers.',
+          },
+          {
+            number: 6,
+            step: 'Top with Parmesan cheese. Cover with foil and bake for 45 minutes.',
+          },
+          {
+            number: 7,
+            step: 'Remove foil and bake 15 more minutes until cheese is golden. Let rest 10 minutes before serving.',
+          },
+        ],
+      },
+    ],
+    nutrition: {
+      nutrients: [
+        {
+          name: 'Calories',
+          amount: 445,
+          unit: 'kcal',
+          percentOfDailyNeeds: 22.25,
+        },
+        { name: 'Fat', amount: 23, unit: 'g', percentOfDailyNeeds: 35.38 },
+        { name: 'Protein', amount: 35, unit: 'g', percentOfDailyNeeds: 70 },
+        {
+          name: 'Carbohydrates',
+          amount: 28,
+          unit: 'g',
+          percentOfDailyNeeds: 9.33,
+        },
+      ],
+    },
   },
   {
     id: 2,
@@ -29,7 +127,91 @@ const SAMPLE_RECIPES = [
     cuisines: ['American'],
     diets: ['vegetarian'],
     pricePerServing: 175,
-    summary: 'Perfectly ripe avocado on artisan bread with premium toppings.',
+    summary:
+      'Perfectly ripe avocado on artisan bread with premium toppings. This nutrient-packed breakfast is both delicious and Instagram-worthy.',
+    extendedIngredients: [
+      {
+        name: 'Sourdough bread',
+        amount: 2,
+        unit: 'slices',
+        original: '2 slices artisan sourdough bread',
+      },
+      {
+        name: 'Avocado',
+        amount: 1,
+        unit: 'large',
+        original: '1 large ripe avocado',
+      },
+      {
+        name: 'Cherry tomatoes',
+        amount: 6,
+        unit: 'pieces',
+        original: '6 cherry tomatoes, halved',
+      },
+      {
+        name: 'Feta cheese',
+        amount: 2,
+        unit: 'tbsp',
+        original: '2 tbsp crumbled feta cheese',
+      },
+      {
+        name: 'Lime',
+        amount: 0.5,
+        unit: 'piece',
+        original: '1/2 lime, juiced',
+      },
+      {
+        name: 'Red pepper flakes',
+        amount: 0.25,
+        unit: 'tsp',
+        original: '1/4 tsp red pepper flakes',
+      },
+      { name: 'Salt', amount: 0.25, unit: 'tsp', original: '1/4 tsp sea salt' },
+    ],
+    analyzedInstructions: [
+      {
+        steps: [
+          {
+            number: 1,
+            step: 'Toast the sourdough bread slices until golden brown.',
+          },
+          {
+            number: 2,
+            step: 'Mash the avocado with lime juice and salt in a small bowl.',
+          },
+          {
+            number: 3,
+            step: 'Spread the avocado mixture evenly on the toasted bread.',
+          },
+          {
+            number: 4,
+            step: 'Top with cherry tomatoes and crumbled feta cheese.',
+          },
+          {
+            number: 5,
+            step: 'Sprinkle with red pepper flakes and serve immediately.',
+          },
+        ],
+      },
+    ],
+    nutrition: {
+      nutrients: [
+        {
+          name: 'Calories',
+          amount: 285,
+          unit: 'kcal',
+          percentOfDailyNeeds: 14.25,
+        },
+        { name: 'Fat', amount: 18, unit: 'g', percentOfDailyNeeds: 27.69 },
+        { name: 'Protein', amount: 8, unit: 'g', percentOfDailyNeeds: 16 },
+        {
+          name: 'Carbohydrates',
+          amount: 28,
+          unit: 'g',
+          percentOfDailyNeeds: 9.33,
+        },
+      ],
+    },
   },
   {
     id: 3,
@@ -43,7 +225,91 @@ const SAMPLE_RECIPES = [
     cuisines: ['Japanese'],
     diets: ['gluten free'],
     pricePerServing: 420,
-    summary: 'Perfectly grilled salmon with homemade teriyaki glaze.',
+    summary:
+      'Perfectly grilled salmon with homemade teriyaki glaze. This healthy and flavorful dish is rich in omega-3 fatty acids.',
+    extendedIngredients: [
+      {
+        name: 'Salmon fillets',
+        amount: 4,
+        unit: 'pieces',
+        original: '4 salmon fillets (6 oz each)',
+      },
+      {
+        name: 'Soy sauce',
+        amount: 0.25,
+        unit: 'cup',
+        original: '1/4 cup low-sodium soy sauce',
+      },
+      { name: 'Mirin', amount: 2, unit: 'tbsp', original: '2 tbsp mirin' },
+      {
+        name: 'Brown sugar',
+        amount: 2,
+        unit: 'tbsp',
+        original: '2 tbsp brown sugar',
+      },
+      {
+        name: 'Ginger',
+        amount: 1,
+        unit: 'tbsp',
+        original: '1 tbsp fresh ginger, grated',
+      },
+      {
+        name: 'Garlic',
+        amount: 2,
+        unit: 'cloves',
+        original: '2 cloves garlic, minced',
+      },
+      {
+        name: 'Sesame oil',
+        amount: 1,
+        unit: 'tsp',
+        original: '1 tsp sesame oil',
+      },
+    ],
+    analyzedInstructions: [
+      {
+        steps: [
+          {
+            number: 1,
+            step: 'Whisk together soy sauce, mirin, brown sugar, ginger, garlic, and sesame oil for the teriyaki glaze.',
+          },
+          {
+            number: 2,
+            step: 'Marinate salmon fillets in half the teriyaki sauce for 15 minutes.',
+          },
+          {
+            number: 3,
+            step: 'Preheat grill to medium-high heat and oil the grates.',
+          },
+          {
+            number: 4,
+            step: 'Grill salmon for 4-5 minutes per side, basting with remaining teriyaki sauce.',
+          },
+          {
+            number: 5,
+            step: 'Cook until internal temperature reaches 145°F and fish flakes easily.',
+          },
+        ],
+      },
+    ],
+    nutrition: {
+      nutrients: [
+        {
+          name: 'Calories',
+          amount: 350,
+          unit: 'kcal',
+          percentOfDailyNeeds: 17.5,
+        },
+        { name: 'Fat', amount: 18, unit: 'g', percentOfDailyNeeds: 27.69 },
+        { name: 'Protein', amount: 42, unit: 'g', percentOfDailyNeeds: 84 },
+        {
+          name: 'Carbohydrates',
+          amount: 8,
+          unit: 'g',
+          percentOfDailyNeeds: 2.67,
+        },
+      ],
+    },
   },
   {
     id: 4,
@@ -58,7 +324,101 @@ const SAMPLE_RECIPES = [
     diets: ['vegetarian', 'vegan'],
     pricePerServing: 225,
     summary:
-      'Fresh, healthy bowl with quinoa, vegetables, and Mediterranean flavors.',
+      'Fresh, healthy bowl with quinoa, vegetables, and Mediterranean flavors. Packed with plant-based protein and colorful vegetables.',
+    extendedIngredients: [
+      {
+        name: 'Quinoa',
+        amount: 1,
+        unit: 'cup',
+        original: '1 cup quinoa, rinsed',
+      },
+      {
+        name: 'Cucumber',
+        amount: 1,
+        unit: 'medium',
+        original: '1 medium cucumber, diced',
+      },
+      {
+        name: 'Cherry tomatoes',
+        amount: 1,
+        unit: 'cup',
+        original: '1 cup cherry tomatoes, halved',
+      },
+      {
+        name: 'Kalamata olives',
+        amount: 0.25,
+        unit: 'cup',
+        original: '1/4 cup kalamata olives, pitted',
+      },
+      {
+        name: 'Red onion',
+        amount: 0.25,
+        unit: 'cup',
+        original: '1/4 cup red onion, diced',
+      },
+      {
+        name: 'Olive oil',
+        amount: 3,
+        unit: 'tbsp',
+        original: '3 tbsp extra virgin olive oil',
+      },
+      {
+        name: 'Lemon juice',
+        amount: 2,
+        unit: 'tbsp',
+        original: '2 tbsp fresh lemon juice',
+      },
+      {
+        name: 'Oregano',
+        amount: 1,
+        unit: 'tsp',
+        original: '1 tsp dried oregano',
+      },
+    ],
+    analyzedInstructions: [
+      {
+        steps: [
+          {
+            number: 1,
+            step: 'Cook quinoa according to package directions and let cool.',
+          },
+          {
+            number: 2,
+            step: 'Dice cucumber, halve cherry tomatoes, and slice red onion.',
+          },
+          {
+            number: 3,
+            step: 'Whisk together olive oil, lemon juice, and oregano for dressing.',
+          },
+          {
+            number: 4,
+            step: 'Combine quinoa with vegetables and olives in a large bowl.',
+          },
+          {
+            number: 5,
+            step: 'Toss with dressing and season with salt and pepper to taste.',
+          },
+        ],
+      },
+    ],
+    nutrition: {
+      nutrients: [
+        {
+          name: 'Calories',
+          amount: 380,
+          unit: 'kcal',
+          percentOfDailyNeeds: 19,
+        },
+        { name: 'Fat', amount: 16, unit: 'g', percentOfDailyNeeds: 24.62 },
+        { name: 'Protein', amount: 12, unit: 'g', percentOfDailyNeeds: 24 },
+        {
+          name: 'Carbohydrates',
+          amount: 52,
+          unit: 'g',
+          percentOfDailyNeeds: 17.33,
+        },
+      ],
+    },
   },
   {
     id: 5,
@@ -72,7 +432,106 @@ const SAMPLE_RECIPES = [
     cuisines: ['American'],
     diets: [],
     pricePerServing: 85,
-    summary: 'Soft, chewy cookies with the perfect chocolate-to-cookie ratio.',
+    summary:
+      'Soft, chewy cookies with the perfect chocolate-to-cookie ratio. A classic treat that never goes out of style.',
+    extendedIngredients: [
+      {
+        name: 'All-purpose flour',
+        amount: 2.25,
+        unit: 'cups',
+        original: '2 1/4 cups all-purpose flour',
+      },
+      {
+        name: 'Butter',
+        amount: 1,
+        unit: 'cup',
+        original: '1 cup butter, softened',
+      },
+      {
+        name: 'Brown sugar',
+        amount: 0.75,
+        unit: 'cup',
+        original: '3/4 cup packed brown sugar',
+      },
+      {
+        name: 'White sugar',
+        amount: 0.75,
+        unit: 'cup',
+        original: '3/4 cup granulated sugar',
+      },
+      { name: 'Eggs', amount: 2, unit: 'large', original: '2 large eggs' },
+      {
+        name: 'Vanilla extract',
+        amount: 2,
+        unit: 'tsp',
+        original: '2 tsp vanilla extract',
+      },
+      {
+        name: 'Baking soda',
+        amount: 1,
+        unit: 'tsp',
+        original: '1 tsp baking soda',
+      },
+      { name: 'Salt', amount: 1, unit: 'tsp', original: '1 tsp salt' },
+      {
+        name: 'Chocolate chips',
+        amount: 2,
+        unit: 'cups',
+        original: '2 cups chocolate chips',
+      },
+    ],
+    analyzedInstructions: [
+      {
+        steps: [
+          {
+            number: 1,
+            step: 'Preheat oven to 375°F and line baking sheets with parchment paper.',
+          },
+          {
+            number: 2,
+            step: 'Cream together butter and both sugars until light and fluffy.',
+          },
+          {
+            number: 3,
+            step: 'Beat in eggs one at a time, then add vanilla extract.',
+          },
+          {
+            number: 4,
+            step: 'In a separate bowl, whisk together flour, baking soda, and salt.',
+          },
+          {
+            number: 5,
+            step: 'Gradually mix dry ingredients into wet ingredients until just combined.',
+          },
+          {
+            number: 6,
+            step: 'Fold in chocolate chips and drop spoonfuls of dough onto baking sheets.',
+          },
+          {
+            number: 7,
+            step: 'Bake for 9-11 minutes until edges are golden brown. Cool on pan for 5 minutes before transferring.',
+          },
+        ],
+      },
+    ],
+    nutrition: {
+      nutrients: [
+        {
+          name: 'Calories',
+          amount: 195,
+          unit: 'kcal',
+          percentOfDailyNeeds: 9.75,
+        },
+        { name: 'Fat', amount: 9, unit: 'g', percentOfDailyNeeds: 13.85 },
+        { name: 'Protein', amount: 2.5, unit: 'g', percentOfDailyNeeds: 5 },
+        {
+          name: 'Carbohydrates',
+          amount: 28,
+          unit: 'g',
+          percentOfDailyNeeds: 9.33,
+        },
+      ],
+    },
   },
   {
     id: 6,
@@ -86,7 +545,99 @@ const SAMPLE_RECIPES = [
     cuisines: ['American'],
     diets: ['vegetarian'],
     pricePerServing: 165,
-    summary: 'Fresh, crispy salad with homemade dressing.',
+    summary:
+      'Fresh, crispy salad with homemade dressing. This classic Caesar salad features crisp romaine lettuce, parmesan cheese, and crunchy croutons.',
+    extendedIngredients: [
+      {
+        name: 'Romaine lettuce',
+        amount: 2,
+        unit: 'heads',
+        original: '2 heads romaine lettuce, chopped',
+      },
+      {
+        name: 'Parmesan cheese',
+        amount: 0.5,
+        unit: 'cup',
+        original: '1/2 cup grated Parmesan cheese',
+      },
+      {
+        name: 'Croutons',
+        amount: 1,
+        unit: 'cup',
+        original: '1 cup homemade croutons',
+      },
+      {
+        name: 'Mayonnaise',
+        amount: 0.5,
+        unit: 'cup',
+        original: '1/2 cup mayonnaise',
+      },
+      {
+        name: 'Lemon juice',
+        amount: 2,
+        unit: 'tbsp',
+        original: '2 tbsp fresh lemon juice',
+      },
+      {
+        name: 'Worcestershire sauce',
+        amount: 1,
+        unit: 'tsp',
+        original: '1 tsp Worcestershire sauce',
+      },
+      {
+        name: 'Garlic',
+        amount: 2,
+        unit: 'cloves',
+        original: '2 cloves garlic, minced',
+      },
+      {
+        name: 'Dijon mustard',
+        amount: 1,
+        unit: 'tsp',
+        original: '1 tsp Dijon mustard',
+      },
+    ],
+    analyzedInstructions: [
+      {
+        steps: [
+          {
+            number: 1,
+            step: 'Wash and chop romaine lettuce into bite-sized pieces.',
+          },
+          {
+            number: 2,
+            step: 'Make dressing by whisking together mayonnaise, lemon juice, Worcestershire sauce, garlic, and Dijon mustard.',
+          },
+          {
+            number: 3,
+            step: 'Toss lettuce with dressing until evenly coated.',
+          },
+          { number: 4, step: 'Top with grated Parmesan cheese and croutons.' },
+          {
+            number: 5,
+            step: 'Serve immediately while lettuce is still crisp.',
+          },
+        ],
+      },
+    ],
+    nutrition: {
+      nutrients: [
+        {
+          name: 'Calories',
+          amount: 220,
+          unit: 'kcal',
+          percentOfDailyNeeds: 11,
+        },
+        { name: 'Fat', amount: 18, unit: 'g', percentOfDailyNeeds: 27.69 },
+        { name: 'Protein', amount: 6, unit: 'g', percentOfDailyNeeds: 12 },
+        {
+          name: 'Carbohydrates',
+          amount: 10,
+          unit: 'g',
+          percentOfDailyNeeds: 3.33,
+        },
+      ],
+    },
   },
 ];
 

@@ -4,7 +4,7 @@ import {
   searchRecipes,
   getRecipesByCategory,
 } from '../services/spoonacularApi';
-import RecipeCard from '../assets/components/RecipeCard';
+import RecipeCard from '../components/RecipeCard';
 
 const RecipesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -175,9 +175,11 @@ const RecipesPage = () => {
           className='p-4 bg-[#E8F5E8] rounded-lg hover:bg-[#c8e6c9] transition-colors'
         >
           <h3 className='font-bold text-gray-800 mb-2'>
-            📊 Nutrition Tracking
+            🔍 Custom Nutrition Search
           </h3>
-          <p className='text-sm text-gray-600'>Track your nutritional goals</p>
+          <p className='text-sm text-gray-600'>
+            Search for recipes based on specific nutritional criteria.
+          </p>
         </Link>
       </div>
 

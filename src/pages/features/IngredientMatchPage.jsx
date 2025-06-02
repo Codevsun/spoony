@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { findRecipesByIngredients } from '../../services/spoonacularApi';
-import RecipeCard from '../../assets/components/RecipeCard';
+import RecipeCard from '../../components/RecipeCard';
 
 const IngredientMatchPage = () => {
   const [selectedIngredients, setSelectedIngredients] = useState([]);

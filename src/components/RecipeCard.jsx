@@ -12,7 +12,7 @@ const RecipeCard = ({
     if (onClick) {
       onClick(recipe);
     } else {
-      navigate('/recipes');
+      navigate(`/recipes/${recipe.id}`);
     }
   };
 
